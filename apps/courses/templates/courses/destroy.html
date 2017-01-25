@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      *{
+        padding:10px;
+        text-align: center;
+      }
+      .destroy_button{
+        background-color: red;
+        color: white;
+      }
+      body{
+        width:1200px;
+        height:800px;
+        border: 8px solid purple;
+      }
+      table{
+        width:100%;
+        border: 3px solid red;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>DESTROY PAGE</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href= "{% static 'courses/css/destroy.css' %}">
+  </head>
+  <body>
+    <h1>Are you sure you want to delete the following course ? </h1>
+    Name: {{}}
+    Description: {{}}
+    <a href = '/'>No!</a>
+    <form class="destroy_button" action="destroy" method="post">
+      {% csrf_token %}
+      <button type="submit">Yes! I want to delete this</button>
+    </form>
+  </body>
+</html>

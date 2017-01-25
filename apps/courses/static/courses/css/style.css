@@ -1,0 +1,12 @@
+*{
+  padding:10px;
+}
+body{
+  width:1200px;
+  height:800px;
+  border: 8px solid purple;
+}
+table{
+  width:100%;
+  border: 3px solid red;
+}

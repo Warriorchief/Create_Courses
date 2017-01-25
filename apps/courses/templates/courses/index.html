@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      *{
+        padding:10px;
+        text-align: center;
+      }
+      body{
+        width:1200px;
+        height:800px;
+        border: 8px solid purple;
+      }
+      table{
+        width:100%;
+        border: 3px solid red;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>COURSES INDEX PAGE</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href= "{% static 'courses/css/style.css' %}">
+  </head>
+  <body>
+    <div class="errorblock">
+      {% if messages %}
+        {% for message in messages %}
+          {{message}}
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h1>Add a new course</h1>
+    <form class="Name" action="make_course" method="post">
+      {% csrf_token %}
+      <input type="text" name="course_name" placeholder="name here">
+      <input type="text" name="course_description" placeholder="descr. here">
+      <input type="submit" Value="Add">
+    </form>
+    <h1>Courses</h1>
+    <table>
+      <tr>
+        <th>Course Name</th>
+        <th>Description</th>
+        <th>Date Added</th>
+        <th>Action</th>
+      </tr>
+      {% for course in courses %}
+        <tr>
+          <td>{{course.course_name}}</td>
+          <td>{{course.course_description}}</td>
+          <td>{{course.created_at}}</td>
+          <td><a href=/destroy/{{course.id}}>remove</a></td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
